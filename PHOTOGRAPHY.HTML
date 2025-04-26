@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Nature Photography Portfolio
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 15px;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: #5673C8;
+        }
+
+        a:hover {
+            color: lightblue;
+        }
+
+        p {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 4;
+            overflow: hidden;
+        }
+
+        .row {
+            margin: 0px -18px;
+            padding: 8px;
+        }
+
+        .row>.column {
+            padding: 6px;
+        }
+
+        .column {
+            float: left;
+            width: 20%;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .column:hover {
+            width: 25%;
+            top: -20px;
+            box-shadow: 0 14px 8px rgba(0, 128, 0, 0.5);
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .content {
+            background-color: white;
+            padding: 10px;
+            border: 1px solid gray;
+        }
+
+        @media screen and (max-width: 850px) {
+            .column {
+                width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .column {
+                width: 100%;
+            }
+        }
+
+        .title {
+            text-align: center;
+            position: relative;
+            width: 100%;
+            height: 15%;
+            background-color: #3e8e41;
+        }
+
+        h3 {
+            font-size: 1.4em;
+        }
+
+        h2 {
+            color: #3e8e41;
+        }
+
+        .gallery {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        .show-gallery {
+            display: grid;
+        }
+
+        .back-button {
+            background-color: #3e8e41;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!-- Sign In / Sign Up Buttons -->
+<div class="auth-buttons">
+    <button onclick="openAuthModal('signin')">Sign In</button>
+    <button onclick="openAuthModal('signup')">Sign Up</button>
+</div>
+
+<!-- Sign In / Sign Up Modal -->
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeAuthModal()">&times;</span>
+        <h2 id="authTitle">Sign In</h2>
+        <form id="authForm">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="toggleText">Don't have an account? <a href="#" onclick="toggleAuthMode()">Sign Up</a></p>
+    </div>
+</div>
+
+   
+<script>
+    function openAuthModal(mode) {
+        document.getElementById("authModal").style.display = "block";
+        document.getElementById("authTitle").innerText = mode === "signup" ? "Sign Up" : "Sign In";
+        document.getElementById("toggleText").innerHTML = mode === "signup" 
+            ? 'Already have an account? <a href="#" onclick="toggleAuthMode()">Sign In</a>'
+            : 'Don\'t have an account? <a href="#" onclick="toggleAuthMode()">Sign Up</a>';
+    }
+
+    function closeAuthModal() {
+        document.getElementById("authModal").style.display = "none";
+    }
+
+    function toggleAuthMode() {
+        let currentMode = document.getElementById("authTitle").innerText;
+        openAuthModal(currentMode === "Sign In" ? "signup" : "signin");
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        let modal = document.getElementById("authModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
+</script>
+
+<body>
+
+<div class="title">
+    <h1>Nature Photography Portfolio</h1>
+</div>
+<div class="container">
+    <h3>Exploring the Beauty of Nature through Photography</h3>
+    <hr>
+
+    <h2>Photography Categories</h2>
+    <div class="row">
+        <div class="column">
+            <div class="content">
+                <a href="forest.html">
+                    
+                    <img src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk=" alt="forest1" style="width:100%">
+                    <h3>Forest Photography</h3>
+                </a>
+                <p>Capture the serenity and mystique of forests with lush trees, sunlight filtering through the canopy, and the diverse wildlife that calls the forest home.</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="content">
+                <a href="mountain.html">
+                    <img src="https://cdn.visualwilderness.com/wp-content/uploads/2019/12/Norway-Landscape-Photography-3.jpg" alt="" style="width:100%">
+                    <h3>Mountain Photography</h3>
+                </a>
+                <p>Experience the towering peaks, sweeping vistas, and breathtaking landscapes that define the majesty of the world's most iconic mountain ranges.</p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="content">
+                <a href="ocean.html">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD3fKHg9-THfJ23fURU8VhHaO1IGrDvaLAKg&s" alt="" style="width:100%">
+                    <h3>Ocean Photography</h3>
+                </a>
+                <p>The ocean's vastness and beauty come alive through the camera lens, capturing waves crashing against the shore, tranquil beaches, and marine life in motion.</p>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="content">
+                <a href="wildlife.html">
+                    <img src="https://www.thrillophilia.com/blog/wp-content/uploads/2017/04/shutterstock_694592521.jpg" alt="" style="width:100%">>
+                    <h3>Wildlife Photography</h3>
+                </a>
+                <p>Immortalize the raw beauty of wildlife in its natural habitat. From majestic lions to graceful birds, wildlife photography captures the essence of the animal kingdom.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Upload Photography Section -->
+<div class="upload-section">
+    <h2>Upload Your Photography</h2>
+    <input type="file" id="userImageUpload" accept="image/*">
+    <button class="button" onclick="uploadUserImage()">Upload</button>
+</div>
+
+<!-- User Uploaded Images Gallery -->
+<div class="gallery" id="user-gallery">
+    <h2>User Uploaded Photos</h2>
+</div>
+
+<script>
+    function uploadUserImage() {
+        const fileInput = document.getElementById('userImageUpload');
+        if (fileInput.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.borderRadius = "10px";
+
+                const div = document.createElement("div");
+                div.appendChild(img);
+                document.getElementById("user-gallery").appendChild(div);
+
+                // Save to Local Storage
+                let userImages = JSON.parse(localStorage.getItem("userPhotography")) || [];
+                userImages.push(e.target.result);
+                localStorage.setItem("userPhotography", JSON.stringify(userImages));
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    // Load User Uploaded Images from Local Storage
+    window.onload = function () {
+        let userImages = JSON.parse(localStorage.getItem("userPhotography")) || [];
+        userImages.forEach(imgSrc => {
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.style.width = "100%";
+            img.style.borderRadius = "10px";
+
+            const div = document.createElement("div");
+            div.appendChild(img);
+            document.getElementById("user-gallery").appendChild(div);
+        });
+    };
+</script>
+<!-- Sign-In Section -->
+<div class="signin-section">
+    <h2>Sign In to Upload Your Photography</h2>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button class="button" onclick="signIn()">Sign In</button>
+    <p id="welcomeMessage"></p>
+</div>
+
+<!-- Upload Photography Section (Hidden until Signed In) -->
+<div class="upload-section" style="display:none;">
+    <h2>Upload Your Photography</h2>
+    <input type="file" id="userImageUpload" accept="image/*">
+    <button class="button" onclick="uploadUserImage()">Upload</button>
+</div>
+
+<!-- User Uploaded Images Gallery -->
+<div class="gallery" id="user-gallery">
+    <h2>User Uploaded Photos</h2>
+</div>
+
+<script>
+    function signIn() {
+        const username = document.getElementById('username').value;
+        if (username.trim() !== "") {
+            localStorage.setItem("signedInUser", username);
+            document.getElementById('welcomeMessage').innerHTML = "Welcome, " + username + "!";
+            document.querySelector('.upload-section').style.display = "block";
+            document.querySelector('.signin-section').style.display = "none";
+        } else {
+            alert("Please enter your name to sign in.");
+        }
+    }
+
+    function uploadUserImage() {
+        const fileInput = document.getElementById('userImageUpload');
+        if (fileInput.files.length > 0) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement("img");
+                img.src = e.target.result;
+                img.style.width = "100%";
+                img.style.borderRadius = "10px";
+
+                const div = document.createElement("div");
+                div.appendChild(img);
+                document.getElementById("user-gallery").appendChild(div);
+
+                // Save to Local Storage
+                let userImages = JSON.parse(localStorage.getItem("userPhotography")) || [];
+                userImages.push(e.target.result);
+                localStorage.setItem("userPhotography", JSON.stringify(userImages));
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    // Load User Uploaded Images from Local Storage
+    window.onload = function () {
+        let signedInUser = localStorage.getItem("signedInUser");
+        if (signedInUser) {
+            document.getElementById('welcomeMessage').innerHTML = "Welcome, " + signedInUser + "!";
+            document.querySelector('.upload-section').style.display = "block";
+            document.querySelector('.signin-section').style.display = "none";
+        }
+
+        let userImages = JSON.parse(localStorage.getItem("userPhotography")) || [];
+        userImages.forEach(imgSrc => {
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.style.width = "100%";
+            img.style.borderRadius = "10px";
+
+            const div = document.createElement("div");
+            div.appendChild(img);
+            document.getElementById("user-gallery").appendChild(div);
+        });
+    };
+</script>
+
+</body>
+
+</html>
